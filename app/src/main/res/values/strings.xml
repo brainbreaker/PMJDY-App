@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Jan Dhan App</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Field validations -->
+    <string name="required_field">This is a required field</string>
+    <string name="ac_required">Account number and pin is required</string>
+    <string name="logging_progress_dialogue">Logging in</string>
+    <string name="registering_user">Registering User</string>
+    <string name="home">Home</string>
+    <string name="fund_transfer_title">Fund Transfer</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">जन धन ऐप</string>
+    <string name="action_settings">सेटिंग्स</string>
+
+    <!-- Field validations -->
+    <string name="required_field">यह एक ज़रूरी जगह हैं</string>
+    <string name="ac_required">Account number and pin is required</string>
+    <string name="logging_progress_dialogue">Logging in</string>
+    <string name="registering_user">Registering BOM User</string>
+    <string name="home">Home</string>
+    <string name="fund_transfer_title">Fund Transfer</string>
+</resources>
