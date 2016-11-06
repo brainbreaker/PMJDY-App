@@ -75,6 +75,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426736007179:android:4531db7031bef28a",
+        "android_client_info": {
+          "package_name": "org.bom.india_hackaton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426736007179-vetl8obevhg80ep5cti879bbog8cf401.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7HmJMoCmAaCFJDcinMPrAM7NK9boOUS4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"
