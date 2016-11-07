@@ -4,15 +4,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.bom.android.container.models.BOM.BOMUser;
 import org.bom.android.container.models.banking.BankingUser;
 import org.bom.india_hackaton.App;
 import org.bom.india_hackaton.R;
 import org.bom.india_hackaton.activities.base.BaseActivity;
+import org.bom.india_hackaton.activities.fundtransfer.FundTransferActivity;
 import org.bom.india_hackaton.utils.RxUtils;
 
 import butterknife.BindView;
@@ -21,6 +26,7 @@ import butterknife.OnClick;
 import rx.functions.Action1;
 
 public class LoginActivity extends BaseActivity {
+    private static final String TAG = "LoginActivity";
     @BindView(R.id.account_number_textview)
     TextView mAccountNumberTextView;
     @BindView(R.id.pin_textview)
@@ -37,6 +43,10 @@ public class LoginActivity extends BaseActivity {
         mAccountNumberTextView.setText("4047560211");
         mPinTextView.setText("123456");
 
+
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        Log.e(TAG, "Subscribed to news topic");
+        Log.e(TAG, "InstanceID token: " + FirebaseInstanceId.getInstance().getToken());
 
         mLoginButton.setEnabled(false);
 
@@ -62,8 +72,13 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void call(BankingUser bankingUser) {
                         hideProgressDialog();
-
                         Intent intentToLaunch = new Intent(LoginActivity.this, BankingHomeActivity.class);
+                        if(getIntent().getStringExtra("activity").matches("pension")){
+                            intentToLaunch = new Intent(LoginActivity.this, FundTransferActivity.class);
+                        }
+                        else if (getIntent().getStringExtra("activity").matches("banking")) {
+                            intentToLaunch = new Intent(LoginActivity.this, BankingHomeActivity.class);
+                        }
                         LoginActivity.this.startActivity(intentToLaunch);
                         LoginActivity.this.finish();
                     }

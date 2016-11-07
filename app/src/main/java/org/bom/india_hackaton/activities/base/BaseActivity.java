@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
-
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import org.bom.india_hackaton.R;

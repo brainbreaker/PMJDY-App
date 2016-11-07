@@ -38,7 +38,7 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 App.getInstance().initializeClientContainer();
-                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

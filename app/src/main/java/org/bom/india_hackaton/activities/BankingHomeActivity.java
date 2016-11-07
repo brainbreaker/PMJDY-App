@@ -21,7 +21,6 @@ public class BankingHomeActivity extends BaseBankingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banking_home);
         ButterKnife.bind(this);
-
         initializeToolbar(getString(R.string.home), false);
     }
 

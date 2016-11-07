@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -37,29 +38,34 @@ android {
 
 dependencies {
     //bom-sdk
-    compile(name:'bom-sdk-hackaton', ext:'aar')
+    compile(name: 'bom-sdk-hackaton', ext: 'aar')
 
     //support libraries
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    
 
     //BOM-SDK required dependencies
+    
+    //permissions
+    
+    //butterknife
+    
+    
+    //Firebase
+    
+    compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'io.reactivex:rxjava:1.1.8'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.trello:rxlifecycle:0.6.1'
     compile 'com.trello:rxlifecycle-components:0.6.1'
-
-    //permissions
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
-
-    //butterknife
     compile 'com.jakewharton:butterknife:8.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
-
     compile 'com.google.code.gson:gson:2.7'
-
-    //Firebase
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.github.clans:fab:1.6.4'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
 }
+
 
 apply plugin: 'com.google.gms.google-services'

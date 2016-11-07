@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
@@ -13,6 +15,11 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.bom.india_hackaton.activities.LoginActivity;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -38,16 +45,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
-
+        Log.e(TAG, "From: " + remoteMessage.getFrom());
+        //To get a Bitmap image from the URL received
+        Bitmap bitmap = getBitmapfromUrl(remoteMessage.getData().get("image"));
+        sendNotification(remoteMessage.getData(), bitmap);
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+            sendNotification(remoteMessage.getData(), bitmap);
         }
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            sendNotification(remoteMessage.getData(), bitmap);
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -58,26 +69,53 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     /**
      * Create and show a simple notification containing the received FCM message.
      *
-     * @param messageBody FCM message body received.
+     * FCM message body received.
      */
-    private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+     private void sendNotification(Map<String, String> data, Bitmap image){
+         Intent intent = new Intent(this, LoginActivity.class);
+         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Message")
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+//            Intent intent = new Intent(mContext, MyOpenableActivity.class);
+//            intent.putExtra("key", "value");
+//            PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 100, intent, PendingIntent.FLAG_ONE_SHOT);
+         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                 .setLargeIcon(image)/*Notification icon image*/
+                 .setSmallIcon(R.mipmap.ic_launcher)
+                 .setContentTitle(data.get("Jan Dhan App"))
+                 .setContentText(data.get("content"))
+                 .setStyle(new NotificationCompat.BigPictureStyle()
+                         .bigPicture(image))/*Notification with Image*/
+                 .setAutoCancel(true)
+                 .setSound(defaultSoundUri)
+                 .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+         NotificationManager notificationManager =
+                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+     }
+
+    /*
+  *To get a Bitmap image from the URL received
+  * */
+    public Bitmap getBitmapfromUrl(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            return bitmap;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+
+        }
     }
 }

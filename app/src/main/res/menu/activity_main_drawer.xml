@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_banking"
+            android:icon="@drawable/bank"
+            android:title="Banking" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/account"
+            android:title="Manage Account" />
+
+        <item
+            android:id="@+id/nav_pension"
+            android:icon="@drawable/apy"
+            android:title="Pay premium" />
+    </group>
+
+    <item android:title="Non-Banking">
+        <menu>
+            <item
+                android:id="@+id/nav_aadhar"
+                android:icon="@drawable/aadhar"
+                android:title="Update Aadhar" />
+            <item
+                android:id="@+id/nav_mapping"
+                android:icon="@drawable/location"
+                android:title="Geo Mapping" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share Application" />
+        </menu>
+    </item>
+
+</menu>
