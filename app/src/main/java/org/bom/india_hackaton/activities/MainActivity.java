@@ -1,6 +1,7 @@
 package org.bom.india_hackaton.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -88,11 +89,13 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("activity","pension");
             startActivity(i);
         } else if (id == R.id.nav_share) {
-
+            Uri uri = Uri.parse("http://www.github.com/brainbreaker"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         } else if (id == R.id.nav_aadhar) {
-
+            startActivity(new Intent("com.barclays.indiahackathonsample.update_aadhar"));
         } else if (id == R.id.nav_mapping) {
-
+            startActivity(getPackageManager().getLaunchIntentForPackage("com.barclays.indiahackathonsample"));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
