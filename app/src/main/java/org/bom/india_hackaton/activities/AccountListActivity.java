@@ -1,6 +1,7 @@
 package org.bom.india_hackaton.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.bom.android.container.models.banking.BankAccount;
@@ -54,7 +55,7 @@ public class AccountListActivity extends BaseBankingActivity {
         StringBuilder sb = new StringBuilder();
         for (BankAccount account : accounts)
             sb.append(App.getSharedGson().toJson(account)).append("\n\n");
-
+        Log.d("Account info",sb.toString());
         mAccountListTextView.setText(sb.toString());
     }
 }

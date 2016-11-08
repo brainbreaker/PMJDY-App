@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- element for a IconSupplementalAction -->
+    <TextView
+        android:id="@+id/apply"
+        android:text="APPLY"
+        android:background="?android:selectableItemBackground"
+        android:layout_width="wrap_content"
+        style="@style/card.native.actions"
+        android:layout_height="wrap_content"/>
+
+    <!-- element for a TextSupplementalAction -->
+    <TextView
+        android:id="@+id/learn"
+        android:text="LEARN MORE"
+        android:background="?android:selectableItemBackground"
+        android:layout_width="wrap_content"
+        style="@style/card.native.actions"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

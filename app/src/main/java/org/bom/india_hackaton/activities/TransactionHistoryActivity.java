@@ -1,6 +1,7 @@
 package org.bom.india_hackaton.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.bom.android.container.models.banking.Transaction;
@@ -52,9 +53,10 @@ public class TransactionHistoryActivity extends BaseBankingActivity {
 
     private void showTransactions(List<Transaction> transactions) {
         StringBuilder sb = new StringBuilder();
-        for (Transaction transaction : transactions)
+        for (Transaction transaction : transactions) {
             sb.append(App.getSharedGson().toJson(transaction)).append("\n\n");
-
+            System.out.println("Txn History: " + App.getSharedGson().toJson(transaction));
+        }
         mTransactionHistoryTextView.setText(sb.toString());
     }
 }

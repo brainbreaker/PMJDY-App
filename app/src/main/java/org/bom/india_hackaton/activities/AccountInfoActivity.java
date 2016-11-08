@@ -1,6 +1,7 @@
 package org.bom.india_hackaton.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.bom.android.container.models.banking.BankAccount;
@@ -37,6 +38,7 @@ public class AccountInfoActivity extends BaseBankingActivity {
                     @Override
                     public void call(BankAccount bankAccount) {
                         hideProgressDialog();
+                        Log.d("Account info",App.getSharedGson().toJson(bankAccount));
                         mAccountInfoTextView.setText(App.getSharedGson().toJson(bankAccount));
                     }
                 }, new Action1<Throwable>() {

@@ -14,23 +14,30 @@
             android:id="@+id/nav_account"
             android:icon="@drawable/account"
             android:title="Manage Account" />
-
         <item
             android:id="@+id/nav_pension"
             android:icon="@drawable/apy"
             android:title="Pay premium" />
+        <item
+            android:id="@+id/nav_support"
+            android:icon="@drawable/support"
+            android:title="Support" />
     </group>
 
     <item android:title="Non-Banking">
         <menu>
             <item
                 android:id="@+id/nav_aadhar"
-                android:icon="@drawable/aadhar"
+                android:icon="@drawable/icon_aadhaar"
                 android:title="Update Aadhar" />
             <item
-                android:id="@+id/nav_mapping"
-                android:icon="@drawable/location"
-                android:title="Geo Mapping" />
+                android:id="@+id/nav_atm"
+                android:icon="@drawable/icon_atm"
+                android:title="List of ATMs" />
+            <item
+                android:id="@+id/nav_bankList"
+                android:icon="@drawable/bank"
+                android:title="List of Banks" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"

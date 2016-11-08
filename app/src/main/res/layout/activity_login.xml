@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/bg_without_man"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
@@ -42,7 +42,7 @@
                 android:layout_marginTop="30dp"
                 android:hint="Access Account"
                 android:inputType="number"
-                android:textColor="@color/white_color" />
+                android:textColor="@color/colorOrange" />
 
             <EditText
                 android:id="@+id/pin_textview"
@@ -51,17 +51,34 @@
                 android:layout_marginTop="10dp"
                 android:hint="PIN"
                 android:inputType="numberPassword"
-                android:textColor="@color/white_color" />
+                android:textColor="@color/colorOrange" />
 
-            <Button
-                android:id="@+id/login_button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_bg"
-                android:text="Login for Banking"
-                android:textColor="@color/background"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="Login for Banking"
+                    android:textColor="@color/white_color"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:src="@drawable/icon_next"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
 
         </LinearLayout>
 

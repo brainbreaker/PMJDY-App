@@ -30,11 +30,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setTitle(title);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.colorOrange));
             setSupportActionBar(toolbar);
 
             if (showBackButton && getSupportActionBar() != null) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_back);
             }
         }
     }

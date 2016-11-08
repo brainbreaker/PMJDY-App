@@ -1,5 +1,6 @@
 package org.bom.india_hackaton.activities;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,8 +15,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.bom.india_hackaton.R;
+
+import java.util.ArrayList;
+
+import it.gmariotti.cardslib.library.cards.actions.BaseSupplementalAction;
+import it.gmariotti.cardslib.library.cards.actions.IconSupplementalAction;
+import it.gmariotti.cardslib.library.cards.material.MaterialLargeImageCard;
+import it.gmariotti.cardslib.library.internal.Card;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,6 +44,37 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Set supplemental actions as icon
+        ArrayList<BaseSupplementalAction> actions = new ArrayList<BaseSupplementalAction>();
+
+        IconSupplementalAction t1 = new IconSupplementalAction(this, R.id.apply);
+        t1.setOnActionClickListener(new BaseSupplementalAction.OnActionClickListener() {
+            @Override
+            public void onClick(Card card, View view) {
+                Toast.makeText(MainActivity.this," Click on Text APPLY ",Toast.LENGTH_SHORT).show();
+            }
+        });
+        actions.add(t1);
+
+        IconSupplementalAction t2 = new IconSupplementalAction(this, R.id.learn);
+        t2.setOnActionClickListener(new BaseSupplementalAction.OnActionClickListener() {
+            @Override
+            public void onClick(Card card, View view) {
+                Toast.makeText(MainActivity.this," Click on Text LEARN ",Toast.LENGTH_SHORT).show();
+            }
+        });
+        actions.add(t2);
+
+        MaterialLargeImageCard card =
+                MaterialLargeImageCard.with(this)
+                        .setTextOverImage("Digilocker")
+                        .setTitle("Register for this service to keep your documents safe")
+                        .setSubTitle("14517 people registered")
+                        .useDrawableId(R.drawable.pmjdylogo)
+                        .setupSupplementalActions(R.layout.supplemental_actions, actions)
+                        .build();
+
     }
 
     @Override
@@ -94,10 +134,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_aadhar) {
             startActivity(new Intent("com.barclays.indiahackathonsample.update_aadhar"));
-        } else if (id == R.id.nav_mapping) {
-            startActivity(getPackageManager().getLaunchIntentForPackage("com.barclays.indiahackathonsample"));
+        } else if (id == R.id.nav_atm) {
+            startActivity(new Intent("com.barclays.indiahackathonsample.get_atm"));
+        } else if (id == R.id.nav_bankList) {
+            startActivity(new Intent("com.barclays.indiahackathonsample.get_banks"));
+        } else if (id == R.id.nav_support) {
+            startActivity(getPackageManager().getLaunchIntentForPackage("com.ibm.mobileappbuilder.pmjdyapp"));
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

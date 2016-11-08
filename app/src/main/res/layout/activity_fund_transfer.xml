@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/bg_without_man"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
@@ -17,8 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/content_padding">
+            android:orientation="vertical">
 
             <!-- Dummy item to catch auto-focus -->
             <View
@@ -28,8 +27,10 @@
                 android:focusableInTouchMode="true" />
 
             <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="248dp"
+                android:padding="16dp"
+                android:background="@drawable/acc_list_bg">
 
                 <TableRow>
 
@@ -155,18 +156,31 @@
 
             </TableLayout>
 
-            <Button
-                android:id="@+id/fundtransfer_button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_bg"
-                android:text="Initiate Fund Transfer"
-                android:textColor="@color/background"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/fundtransfer_button"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="Initiate Fund Transfer"
+                    android:textColor="@color/white_color"
+                    android:textStyle="bold" />
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:src="@drawable/icon_next"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/logs_textview"
                 android:layout_width="match_parent"
